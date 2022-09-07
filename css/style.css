@@ -28,6 +28,17 @@ body {
   height: 80vh;
 }
 
+.carousel-images h1{
+  position: fixed;
+  top: 0;
+  z-index: 5;
+  display: inline-block;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.356);
+  padding: 25px 0 25px;
+  text-align: center;
+}
+
 .carousel-images .carousel-img {
   position: absolute;
   top: 0px;
