@@ -61,7 +61,9 @@ const images = [
     },
 ];
 
-const imagesArray = (takeValuesByArrayObjects(images, 'url'))
+//creo una funzione, che estrapola in base alla chiave che inserisco, il valore contenuto e restituisce un array
+//inserisco i nuovi array e assegno i valori
+const imagesArray = (takeKeyValuesByArrayObjects(images, 'url'))
 
 
 let activeIndex = 0;
@@ -78,27 +80,7 @@ leftArrowButton.addEventListener('click', moveCarouselPrevious);
 rightArrowButton.addEventListener('click', moveCarouselForward);
 
 
-//creo una funzione, che estrapola in base alla chiave che inserisco, il valore contenuto e restituisce un array
 
-function takeValuesByArrayObjects(array, keyWhoWant){
-    
-    const valuesArray = [];
-
-    for( let arrayObject = 0; arrayObject < array.length; arrayObject++){
-
-        const objects = array[arrayObject]
-        console.log(objects)
-
-        for(let key in objects){
-
-            console.log(objects.key)
-
-        }
-
-    }
-}
-
-//inserisco i nuovi array e assegno i valori
 
 
 function moveCarouselForward(){
@@ -147,7 +129,7 @@ function createImageArray(numImages){
 //dato un array di oggetti e la chiave dei valori che si vogliono ottenere
 //viene restituito un array con i valori della chiave, di ogni oggetto
 
-function takeValuesByArrayObjects(array, keyWhoWant){
+function takeKeyValuesByArrayObjects(array, keyWhoWant){
     const valuesArray = [];
     for( let arrayObject = 0; arrayObject < array.length; arrayObject++){
         const objects = array[arrayObject]
