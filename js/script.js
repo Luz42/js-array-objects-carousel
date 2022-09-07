@@ -63,11 +63,14 @@ const images = [
 
 //creo una funzione, che estrapola in base alla chiave che inserisco, il valore contenuto e restituisce un array
 //inserisco i nuovi array e assegno i valori
-const imagesArray = (takeKeyValuesByArrayObjects(images, 'url'))
+const imagesArray = (takeKeyValuesByArrayObjects(images, 'url'));
+const titleArray = (takeKeyValuesByArrayObjects(images, 'title'));
+const descriptionArray = (takeKeyValuesByArrayObjects(images, 'description'));
+console.log(descriptionArray)
 
 
 let activeIndex = 0;
-buildCarousel(imagesArray, activeIndex);
+buildCarousel(imagesArray, descriptionArray, activeIndex);
 
 let idInterval = setInterval(moveCarouselForward, CHANGE_IMAGE_DELAY * 1000);
 
@@ -87,7 +90,7 @@ function moveCarouselForward(){
     clearInterval(idInterval)
     // se l'indice si trova in fondo allora lo riposizione all'inizio dell'array
     activeIndex = activeIndex < imagesArray.length -1 ? activeIndex +1 : 0 ;
-    buildCarousel(imagesArray, activeIndex);
+    buildCarousel(imagesArray, descriptionArray,activeIndex);
     idInterval = setInterval(moveCarouselForward, CHANGE_IMAGE_DELAY * 1000);
 }
 
@@ -95,19 +98,20 @@ function moveCarouselPrevious(){
      clearInterval(idInterval)
     // se l'indice è in prima posizione si valorizza all'ultima posizione dell'array
     activeIndex = activeIndex > 0 ? activeIndex -1 : imagesArray.length -1 ;
-    buildCarousel(imagesArray, activeIndex);
+    buildCarousel(imagesArray, descriptionArray,activeIndex);
     idInterval = setInterval(moveCarouselForward, CHANGE_IMAGE_DELAY * 1000);
 }
 
 
-function buildCarousel(urls, activeIndex){
+function buildCarousel(urls, descriptions ,activeIndex){
     const carouselImages = document.querySelector('.carousel-images');
     const carouselThumbs = document.querySelector('.carousel-thumbs');
     let content = '';
     for(let i = 0; i < urls.length; i++){
         const url = urls[i];
+        const description = descriptions[i];
         const imageClass = i === activeIndex ? 'carousel-img active' : 'carousel-img'
-        content += `<img class="${imageClass}" src="${url}" alt="${url}" />`;
+        content += `<img class="${imageClass}" src="${url}" alt="${description}" />`;
     }
     // console.log({content});
     carouselImages.innerHTML = content;
